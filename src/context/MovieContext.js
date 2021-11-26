@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
-
 export const MovieContext = createContext();
 
 const MovieContextProvider = ({ children }) => {
@@ -8,7 +7,7 @@ const MovieContextProvider = ({ children }) => {
   const FUTURE_API = ` https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
   const IMG_PATH = `https://image.tmdb.org/t/p/original/`;
   const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&include_adult=false&query=`;
-  const VIDEO_API = `http://api.themoviedb.org/3/movie/550/videos?api_key=${API_KEY}`;
+  const VIDEO_API = `https://api.themoviedb.org/3/movie/550/videos?api_key=${API_KEY}`;
 
   const [movies, setMovies] = useState([]);
   const [banner, setBanner] = useState([]);
@@ -34,7 +33,7 @@ const MovieContextProvider = ({ children }) => {
     const getTrailerMovie = (idMovie) => {
       const getTrailer = async () => {
         const res = await axios.get(
-          `http://api.themoviedb.org/3/movie/${idMovie}/videos?api_key=${API_KEY}`
+          `https://api.themoviedb.org/3/movie/${idMovie}/videos?api_key=${API_KEY}`
         );
         const dataTerm = res && res.data ? res.data.results[0] : [];
         setTrailer(dataTerm);
